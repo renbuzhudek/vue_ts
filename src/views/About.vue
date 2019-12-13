@@ -30,12 +30,18 @@ export default class About extends Vue {
     alert('This browser does not support desktop notification')
   } else if (Notification.permission === 'granted') {
     // If it's okay let's create a notification
-    const notification = new Notification('Hi there!')
+    const notification = new Notification('Hi there!', {
+    body: '这是一条通知',
+    icon: '/img/icons/favicon-16x16.png',
+  })
   } else if (Notification.permission !== 'denied') {
     Notification.requestPermission(function (permission) {
       // 如果用户同意，就可以向他们发送通知
       if (permission === 'granted') {
-        const notification = new Notification('Hi there!')
+        const notification = new Notification('Hi there!', {
+    body: '这是一条通知',
+    icon: '/img/icons/favicon-16x16.png',
+  })
       }
     })
   }

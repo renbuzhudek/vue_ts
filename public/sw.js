@@ -67,3 +67,14 @@ self.addEventListener('notificationclick', function(event) {
       clients.openWindow('https://developers.google.com/web/')    // 打开一个标签
   )
 })
+
+// 处理消息推送事件，发出通知
+self.addEventListener('push', function(event) {
+  const title = event.data.text();
+  const options = {
+    body:title,
+    icon: './images/logo.png',
+  };
+ 
+  event.waitUntil(self.registration.showNotification(title, options));
+});
