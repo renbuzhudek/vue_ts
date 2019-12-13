@@ -1,32 +1,32 @@
 /* tslint:disable:no-console */
 
 import { register } from 'register-service-worker'
+const swUrl = process.env.NODE_ENV === 'production' ?  'service-worker.js' : 'sw.js'
 
-if (process.env.NODE_ENV === 'production') {
-  register(`${process.env.BASE_URL}service-worker.js`, {
-    ready () {
+register(`${process.env.BASE_URL}${swUrl}`, {
+    ready() {
       console.log(
         'App is being served from cache by a service worker.\n' +
-        'For more details, visit https://goo.gl/AFskqB'
+        'For more details, visit https://goo.gl/AFskqB',
       )
     },
-    registered () {
+    registered(e) {
       console.log('Service worker has been registered.')
     },
-    cached () {
+    cached() {
       console.log('Content has been cached for offline use.')
     },
-    updatefound () {
+    updatefound() {
       console.log('New content is downloading.')
     },
-    updated () {
+    updated() {
       console.log('New content is available; please refresh.')
     },
-    offline () {
+    offline() {
       console.log('No internet connection found. App is running in offline mode.')
     },
-    error (error) {
+    error(error) {
       console.error('Error during service worker registration:', error)
-    }
+    },
   })
-}
+

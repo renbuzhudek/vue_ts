@@ -9,6 +9,9 @@
     ]
   },
   "rules": {
+    "no-unused-expression":false,
+    "only-arrow-functions":false,
+    "no-console":false,
     "arrow-parens":false,
     "space-before-function-paren": false,
     "trailing-comma": false,
